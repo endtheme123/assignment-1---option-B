@@ -15,8 +15,16 @@ public class State {
 
     State down;
 
+    ArrayList<Integer> path_cost = new ArrayList<Integer>();
     LinkedHashMap<String,State> available_path =   new LinkedHashMap<>();
 
+
+    public int manhattan_cost_to_des(int des_x, int des_y){
+        System.out.println((this.pos[0]) + "," + this.pos[1]);
+        System.out.println(des_x + "," + des_y);
+        System.out.println("_____");
+        return (Math.abs(this.pos[0] - des_x) + Math.abs(this.pos[1]-des_y));
+    }
 
 
 

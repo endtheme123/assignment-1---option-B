@@ -44,7 +44,8 @@ public class BFS extends SearchAlgo{
 
                 read.visited = true;
                 read.role = "visi";
-//                env.print_map_parent();
+                System.out.println("______");
+                env.print_map_parent();
 //                System.out.println(read.visited);
             }
 

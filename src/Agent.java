@@ -8,7 +8,11 @@ public class Agent {
         SearchAlgo bfs = new BFS(env);
         System.out.println(bfs.name);
         SearchAlgo dfs = new DFS((env));
+        SearchAlgo gbfs = new GBFS((env));
+        SearchAlgo a_star = new A_star(env);
         algo_list.add(dfs);
+        algo_list.add(gbfs);
+        algo_list.add(a_star);
         algo_list.add(bfs);
         this.env = env;
         this.main_algo = algo_lookup(algo_name);

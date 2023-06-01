@@ -9,6 +9,9 @@ import static java.lang.Integer.parseInt;
 
 public class Env {
     String filepath;
+
+    int[] map_wide;
+    int[][] desti_list;
     State[][] map;
     int[] initial_pos;
     public Env(String filepath) {
@@ -21,10 +24,10 @@ public class Env {
             File myObj = new File(filepath);
 
             Scanner myReader = new Scanner(myObj);
-            String map_wide = myReader.nextLine();
-            String map_wide_p = map_wide.trim().replaceAll("\\[", "").replaceAll("\\]", "");
+            String map_wide_f = myReader.nextLine();
+            String map_wide_p = map_wide_f.trim().replaceAll("\\[", "").replaceAll("\\]", "");
             String[] map_wide_p2 = map_wide_p.split(",");
-
+            this.map_wide = Arrays.stream(map_wide_p2).mapToInt(Integer::parseInt).toArray();
             this.map = new State[parseInt(map_wide_p2[0])][parseInt(map_wide_p2[1])];
             for(int i = 0; i<map.length;i++){
                 for(int j = 0; j < map[0].length; j++){
@@ -44,7 +47,7 @@ public class Env {
             String desti = myReader.nextLine();
             String desti_p = desti.trim().replaceAll("\\(", "").replaceAll("\\)", "").replaceAll(" ","");
             String[] desti_p2 = desti_p.split("\\|");
-            int[][] desti_list = new int[desti_p2.length][];
+            this.desti_list = new int[desti_p2.length][];
             for(int i = 0; i<desti_p2.length;i++){
                 int[] a = Arrays.stream(desti_p2[i].split(",")).mapToInt(Integer::parseInt).toArray();
                 desti_list[i] = a;
@@ -140,6 +143,17 @@ public class Env {
             String a = "";
             for(int j = 0; j < map[0].length; j++){
                 a = a + " " + ((map[i][j].parent!=null)? map[i][j].parent.pos[0]+","+map[i][j].parent.pos[1] : "nul");
+            }
+            System.out.println(a);
+        }
+    }
+
+    public void print_map_cost(){
+        for(int i = 0; i<map.length;i++){
+            String a = "";
+            for(int j = 0; j < map[0].length; j++){
+                a = a + " " + ( (map[i][j].path_cost.size()>0)? map[i][j].path_cost: "[   ]");
+
             }
             System.out.println(a);
         }

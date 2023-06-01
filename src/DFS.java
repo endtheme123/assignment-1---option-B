@@ -25,7 +25,7 @@ public class DFS extends SearchAlgo{
             if(!read.visited){
 
                 for(String key: read.available_path.keySet()) {
-                    if(!read.available_path.get(key).visited){
+                    if(!read.available_path.get(key).visited && !stack.contains(read.available_path.get(key))){
                         read.available_path.get(key).parent = read;
                         stack.push(read.available_path.get(key));
                     }
