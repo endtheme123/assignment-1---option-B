@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import static java.lang.Integer.divideUnsigned;
 import static java.lang.Integer.parseInt;
 
 public class Env {
@@ -157,6 +158,24 @@ public class Env {
             }
             System.out.println(a);
         }
+    }
+
+    public void reset_map(){
+        for(int i = 0; i<map.length;i++){
+            String a = "";
+            for(int j = 0; j < map[0].length; j++){
+                map[i][j].path_cost = new ArrayList<>();
+                if(map[i][j].visited){
+                    map[i][j].visited = false;
+                    map[i][j].role = "path";
+                }
+
+            }
+
+        }
+        System.out.println("___________");
+        System.out.println("reset done");
+        print_map();
     }
 
 }

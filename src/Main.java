@@ -12,9 +12,9 @@ public class Main {
         env.generate_map();
         env.print_map();
 
-        Agent p = new Agent(env, "A*");
+        Agent p = new Agent(env, "IDDFS");
         ArrayList<String> directions = p.get_path();
-        String way_to_go = String.join("; ", directions);
+        String way_to_go = String.join("; ", directions) + ";";
         System.out.println(way_to_go);
 
 

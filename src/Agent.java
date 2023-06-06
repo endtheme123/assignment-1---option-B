@@ -6,10 +6,14 @@ public class Agent {
     ArrayList<SearchAlgo> algo_list = new ArrayList<SearchAlgo>();
     public Agent (Env env, String algo_name) {
         SearchAlgo bfs = new BFS(env);
-        System.out.println(bfs.name);
+
         SearchAlgo dfs = new DFS((env));
         SearchAlgo gbfs = new GBFS((env));
         SearchAlgo a_star = new A_star(env);
+        SearchAlgo ida = new IDA(env);
+        SearchAlgo iddfs = new IDDFS(env);
+        algo_list.add(iddfs);
+        algo_list.add(ida);
         algo_list.add(dfs);
         algo_list.add(gbfs);
         algo_list.add(a_star);

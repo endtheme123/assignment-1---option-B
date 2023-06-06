@@ -1,5 +1,6 @@
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -8,6 +9,7 @@ public class State {
 
     State parent;
     boolean visited = false;
+    int depth;
     String role = "";
     State right;
     State left;
@@ -18,6 +20,10 @@ public class State {
     ArrayList<Integer> path_cost = new ArrayList<Integer>();
     LinkedHashMap<String,State> available_path =   new LinkedHashMap<>();
 
+
+    public int get_representative_(){
+        return Collections.min(path_cost);
+    }
 
     public int manhattan_cost_to_des(int des_x, int des_y){
         System.out.println((this.pos[0]) + "," + this.pos[1]);
